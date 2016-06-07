@@ -17,4 +17,9 @@
     <string name="action_sign_up">action_sign_up</string>
     <string name="action_sign_up_short">action_sign_up_short</string>
     <string name="prompt_name">prompt_name</string>
+    <string name="update_password">update_password</string>
+    <string name="update_login">update_login</string>
+    <string name="update_profile">update_profile</string>
+    <string name="password_info">password_info</string>
+    <string name="prompt_new_password">prompt_new_password</string>
 </resources>
