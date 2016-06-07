@@ -157,13 +157,14 @@ public class User  {
         }
     }
 
-    public void removeDB(){
+    public void removeDB( DatabaseReference.CompletionListener completionListener){
+
         DatabaseReference firebase = LibraryClass.getFirebase().child("users").child( getId() );
         firebase.setValue(null);
     }
 
     public void contextDataDB( Context context ){
-        retrieveIdSP( context );
+
         DatabaseReference firebase = LibraryClass.getFirebase().child("users").child( getId() );
 
         firebase.addListenerForSingleValueEvent( (ValueEventListener) context );

@@ -22,4 +22,9 @@
     <string name="update_profile">update_profile</string>
     <string name="password_info">password_info</string>
     <string name="prompt_new_password">prompt_new_password</string>
+    <string name="reset">reset</string>
+    <string name="reset_bt_label">reset_bt_label</string>
+    <string name="remove_user">remove_user</string>
+    <string name="action_link">action_link</string>
+    <string name="action_unlink">action_unlink</string>
 </resources>

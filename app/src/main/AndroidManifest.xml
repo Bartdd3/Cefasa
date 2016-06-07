@@ -31,12 +31,18 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UpdatePasswordActivity"
+        <activity
+            android:name=".UpdatePasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UpdateLoginActivity"
+        <activity
+            android:name=".UpdateLoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UpdateActivity"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity
+            android:name=".UpdateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResetActivity" />
+        <activity android:name=".RemoveUserActivity" />
+        <activity android:name=".LinkAccountsActivity"></activity>
     </application>
 
 </manifest>
