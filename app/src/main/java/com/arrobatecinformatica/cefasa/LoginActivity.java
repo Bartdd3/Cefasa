@@ -18,22 +18,29 @@ import android.widget.ProgressBar;
 import com.arrobatecinformatica.cefasa.domain.User;
 import com.facebook.CallbackManager;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GithubAuthProvider;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.TwitterAuthProvider;
 import com.google.firebase.crash.FirebaseCrash;
 
-public class LoginActivity extends CommonActivity {
+public class LoginActivity extends CommonActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    private static final int RC_SIGN_IN_GOOGLE = 7859;
+  //  private static final int RC_SIGN_IN_GOOGLE = 7859;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private User user;
-    private CallbackManager callbackManager;
+   // private CallbackManager callbackManager;
 
     private static final String TAG = LoginActivity.class.getSimpleName() ;
 
@@ -67,6 +74,62 @@ public class LoginActivity extends CommonActivity {
         }
     }
 
+
+
+
+//    private void accessLoginData( String provider, String... tokens ){
+//        if( tokens != null
+//                && tokens.length > 0
+//                && tokens[0] != null ){
+//
+//            AuthCredential credential = EmailAuthProvider.getCredential( tokens[0], tokens[1] );
+////            credential = provider.equalsIgnoreCase("google") ? GoogleAuthProvider.getCredential( tokens[0], null) : credential;
+////            credential = provider.equalsIgnoreCase("twitter") ? TwitterAuthProvider.getCredential( tokens[0], tokens[1] ) : credential;
+////            credential = provider.equalsIgnoreCase("github") ? GithubAuthProvider.getCredential( tokens[0] ) : credential;
+//
+//            user.saveProviderSP( LoginActivity.this, provider );
+//            mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                @Override
+//                public void onComplete(@NonNull Task<AuthResult> task) {
+//
+//                    if( !task.isSuccessful() ){
+//                        showSnackbar("Login social falhou");
+//                    }
+//                }
+//            });
+//        }
+//        else{
+//            mAuth.signOut();
+//        }
+//    }
+
+
+    private FirebaseAuth.AuthStateListener getFirebaseAuthResultHandler(){
+        FirebaseAuth.AuthStateListener callback = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                FirebaseUser userFirebase = firebaseAuth.getCurrentUser();
+
+                if( userFirebase == null ){
+                    return;
+                }
+
+                if( user.getId() == null
+                        && isNameOk( user, userFirebase ) ){
+
+                    user.setId( userFirebase.getUid() );
+                    user.setNameIfNull( userFirebase.getDisplayName() );
+                    user.setEmailIfNull( userFirebase.getEmail() );
+                    user.saveDB();
+                }
+
+                callMainActivity();
+            }
+        };
+        return( callback );
+    }
+
     public void callSignUp(View view){
         Intent intent = new Intent( this, SignUpActivity.class );
         startActivity(intent);
@@ -78,11 +141,6 @@ public class LoginActivity extends CommonActivity {
         verifyLogin();
     }
 
-    private void callMainActivity(){
-        Intent intent = new Intent( this, MainActivity.class );
-        startActivity(intent);
-        finish();
-    }
 
     private void verifyLogged(){
         if( mAuth.getCurrentUser() != null ){
@@ -133,6 +191,19 @@ public class LoginActivity extends CommonActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    protected void initViews(){
+        email = (AutoCompleteTextView) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        progressBar = (ProgressBar) findViewById(R.id.login_progress);
+    }
+
+    protected void initUser(){
+        user = new User();
+        user.setEmail( email.getText().toString() );
+        user.setPassword( password.getText().toString() );
+        user.generateCryptPassword();
+    }
+
 
 
 
@@ -149,31 +220,9 @@ public class LoginActivity extends CommonActivity {
 
     }
 
-    private FirebaseAuth.AuthStateListener getFirebaseAuthResultHandler(){
-        FirebaseAuth.AuthStateListener callback = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
 
-                FirebaseUser userFirebase = firebaseAuth.getCurrentUser();
 
-                if( userFirebase != null
-                        && user.getId() == null
-                        && isNameOk( user, userFirebase ) ){
 
-                    user.saveIdSP( LoginActivity.this, userFirebase.getUid() );
-                    user.setId( userFirebase.getUid() );
-                    user.setNameIfNull( userFirebase.getDisplayName() );
-                    user.setEmailIfNull( userFirebase.getEmail() );
-                    user.saveDB();
-
-                   /* callMainActivity();*/
-                    Intent intent = new Intent( LoginActivity.this, MainActivity.class );
-                    startActivity(intent);
-                }
-            }
-        };
-        return( callback );
-    }
 
     private boolean isNameOk( User user, FirebaseUser firebaseUser ){
         return(
@@ -182,18 +231,24 @@ public class LoginActivity extends CommonActivity {
         );
     }
 
-    protected void initViews(){
-        email = (AutoCompleteTextView) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        progressBar = (ProgressBar) findViewById(R.id.login_progress);
+
+
+
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+        showSnackbar( connectionResult.getErrorMessage() );
+
     }
 
-    protected void initUser(){
-        user = new User();
-        user.setEmail( email.getText().toString() );
-        user.setPassword( password.getText().toString() );
-        user.generateCryptPassword();
+    private void callMainActivity(){
+        Intent intent = new Intent( this, MainActivity.class );
+        startActivity(intent);
+        finish();
     }
+
+
 
 
 }
