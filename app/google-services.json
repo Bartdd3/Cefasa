@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "1096957045571",
+    "firebase_url": "https://ciadosprofissionais.firebaseio.com",
+    "project_id": "ciadosprofissionais",
+    "storage_bucket": "ciadosprofissionais.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096957045571:android:7fbf6f303341a569",
+        "android_client_info": {
+          "package_name": "com.arrobatecinformatica.ciadoprofissional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096957045571-nh3t7qqfa939ipeuu7kr4ejfqum27cug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEeAUYD5h1czA9ykwELICWLf1kdyDWaqM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096957045571:android:c05ed47793fc8d5a",
+        "android_client_info": {
+          "package_name": "com.arrobatecinformatica.cefasa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096957045571-nh3t7qqfa939ipeuu7kr4ejfqum27cug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEeAUYD5h1czA9ykwELICWLf1kdyDWaqM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
