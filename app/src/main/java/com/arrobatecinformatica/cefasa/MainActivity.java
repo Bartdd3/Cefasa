@@ -127,8 +127,24 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if(id == R.id.action_update){
+            startActivity(new Intent(this, UpdateActivity.class));
+        }
+        else if(id == R.id.action_update_login){
+            startActivity(new Intent(this, UpdateLoginActivity.class));
+        }
+        else if(id == R.id.action_update_password){
+            startActivity(new Intent(this, UpdatePasswordActivity.class));
+        }
+        else if(id == R.id.action_link_accounts){
+            startActivity(new Intent(this, LinkAccountsActivity.class));
+        }
+        else if(id == R.id.action_remove_user){
+            startActivity(new Intent(this, RemoveUserActivity.class));
+        }
+        else if(id == R.id.action_logout){
+            FirebaseAuth.getInstance().signOut();
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

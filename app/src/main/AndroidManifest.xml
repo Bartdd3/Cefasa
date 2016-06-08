@@ -33,16 +33,25 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UpdatePasswordActivity"
+            android:label="@string/title_activity_update_password"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UpdateLoginActivity"
+            android:label="@string/title_activity_update_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UpdateActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResetActivity" />
-        <activity android:name=".RemoveUserActivity" />
-        <activity android:name=".LinkAccountsActivity"></activity>
+            android:label="@string/title_activity_update"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".ResetActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".RemoveUserActivity"
+            android:label="@string/title_activity_remove_user"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".LinkAccountsActivity"
+            android:label="@string/title_activity_link_accounts"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

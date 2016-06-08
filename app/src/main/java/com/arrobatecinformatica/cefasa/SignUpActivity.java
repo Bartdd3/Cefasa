@@ -81,7 +81,7 @@ public class SignUpActivity extends CommonActivity implements DatabaseReference.
         user.setName( name.getText().toString() );
         user.setEmail( email.getText().toString() );
         user.setPassword( password.getText().toString() );
-        user.generateCryptPassword();
+
 
     }
 

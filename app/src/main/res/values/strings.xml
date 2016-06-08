@@ -27,4 +27,11 @@
     <string name="remove_user">remove_user</string>
     <string name="action_link">action_link</string>
     <string name="action_unlink">action_unlink</string>
+    <string name="link_accounts">link_accounts</string>
+    <string name="logout">logout</string>
+    <string name="title_activity_update_login">title_activity_update_login</string>
+    <string name="title_activity_update_password">title_activity_update_password</string>
+    <string name="title_activity_remove_user">title_activity_remove_user</string>
+    <string name="title_activity_update">title_activity_update</string>
+    <string name="title_activity_link_accounts">title_activity_link_accounts</string>
 </resources>

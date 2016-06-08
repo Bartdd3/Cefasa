@@ -201,7 +201,7 @@ public class LoginActivity extends CommonActivity implements GoogleApiClient.OnC
         user = new User();
         user.setEmail( email.getText().toString() );
         user.setPassword( password.getText().toString() );
-        user.generateCryptPassword();
+
     }
 
 
