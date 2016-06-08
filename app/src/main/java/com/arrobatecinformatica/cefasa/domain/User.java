@@ -17,7 +17,7 @@ import java.util.Map;
 public class User  {
 
     public static String PROVIDER = "com.arrobatecinformatica.cefasa.domain.User.PROVIDER";
-   // public static String ID = "com.arrobatecinformatica.cefasa.domain.User.ID";//
+   // public static String ID = "com.arrobatecinformatica.cefasa.domain.User.ID";
 
 
     private String id;
