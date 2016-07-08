@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import android.os.Bundle;
 
+
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
@@ -38,7 +40,8 @@ public class SignUpActivity extends CommonActivity implements DatabaseReference.
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if( firebaseUser == null || user.getId() != null ){                    return;
+                if( firebaseUser == null || user.getId() != null ){
+                    return;
                 }
 
                 user.setId( firebaseUser.getUid() );
@@ -46,6 +49,8 @@ public class SignUpActivity extends CommonActivity implements DatabaseReference.
                 // ...
             }
         };
+
+
 
         initViews();
     }
@@ -118,7 +123,7 @@ public class SignUpActivity extends CommonActivity implements DatabaseReference.
 
         showToast( "Conta criada com sucesso!" );
         closeProgressBar();
-        finish();
+       finish();
 
     }
 }

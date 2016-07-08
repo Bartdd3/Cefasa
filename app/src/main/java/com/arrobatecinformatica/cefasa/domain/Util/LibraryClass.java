@@ -13,8 +13,10 @@ public class LibraryClass  {
 
     public static String PREF = "com.arrobatecinformatica.cefasa.PREF";
     private static DatabaseReference firebase;
+    //construtor
     private LibraryClass(){}
 
+    // instanciando o banco de dados
     public static DatabaseReference getFirebase(){
         if( firebase == null ){
             firebase = FirebaseDatabase.getInstance().getReference();
